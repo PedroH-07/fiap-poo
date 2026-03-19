@@ -5,10 +5,14 @@ public class Oculos {
     private double grau;
     private String material;
 
-    public Oculos() {
+    public Oculos(String armacao, double grau, String material) {
         this.armacao = "Padrao";
         this.grau = 0.0;
         this.material = "A definir";
+
+        this.setArmacao(armacao);
+        this.setGrau(grau);
+        this.setMaterial(material);
     }
 
     public String getArmacao() {

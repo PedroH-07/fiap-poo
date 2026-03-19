@@ -4,8 +4,8 @@ import br.com.fiapride.model.Oculos;
 
 public class TesteMeuOculos {
     public static void main(String[] args) {
-        Oculos meuOculos = new Oculos();
-        Oculos reservaOculos = new Oculos();
+        Oculos meuOculos = new Oculos("Redondo", 1.25, "Acrilico");
+        Oculos reservaOculos = new Oculos("Retangular", 2.0, "Aco");
 
         System.out.println("--- Estado inicial dos oculos ---");
         System.out.println("Meu oculos: " + meuOculos.getArmacao() + " | Material: "
