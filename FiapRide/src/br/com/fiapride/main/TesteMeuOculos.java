@@ -2,16 +2,23 @@ package br.com.fiapride.main;
 
 import br.com.fiapride.model.Oculos;
 import br.com.fiapride.model.Lente;
+import br.com.fiapride.model.OculosDeGrau;
+import br.com.fiapride.model.OculosDeSol;
 
 public class TesteMeuOculos {
     public static void main(String[] args) {
-        // Criando as lentes para os óculos
+        // Criando as lentes para os oculos
         Lente lentePrincipal = new Lente(1.25, "Monofocal");
         Lente lenteReserva = new Lente(2.0, "Bifocal");
+        Lente lenteSolar = new Lente(0.0, "Solar");
 
-        // Criando os óculos com as respectivas lentes
+        // Classe base
         Oculos meuOculos = new Oculos("Redondo", "Acrilico", lentePrincipal);
         Oculos reservaOculos = new Oculos("Retangular", "Aco", lenteReserva);
+
+        // Subclasses com atributos exclusivos
+        OculosDeGrau oculosDeGrau = new OculosDeGrau("Quadrado", "Titanio", lentePrincipal, 63.5);
+        OculosDeSol oculosDeSol = new OculosDeSol("Aviador", "Metal", lenteSolar, "UV400");
 
         System.out.println("--- Estado inicial dos oculos ---");
         System.out.println("Meu oculos: " + meuOculos.getArmacao() + " | Material: "
@@ -23,6 +30,24 @@ public class TesteMeuOculos {
                 + reservaOculos.getMaterial());
         System.out.println("Lente utilizada: Grau " + reservaOculos.getLenteUtilizada().getGrau() + 
                 " | Tipo: " + reservaOculos.getLenteUtilizada().getTipo());
+
+        System.out.println("\n--- Testando subclasses com extends e super() ---");
+        System.out.println("Oculos de grau: " + oculosDeGrau.getArmacao() + " | Material: "
+                + oculosDeGrau.getMaterial() + " | Distancia pupilar: " + oculosDeGrau.getDistanciaPupilar() + " mm");
+        System.out.println("Oculos de sol: " + oculosDeSol.getArmacao() + " | Material: "
+                + oculosDeSol.getMaterial() + " | Protecao: " + oculosDeSol.getNivelProtecaoUv());
+
+        System.out.println("\n--- Testando setters exclusivos das filhas ---");
+        oculosDeGrau.setDistanciaPupilar(61.0);
+        oculosDeSol.setNivelProtecaoUv("UV380");
+        System.out.println("Distancia pupilar atualizada: " + oculosDeGrau.getDistanciaPupilar() + " mm");
+        System.out.println("Protecao UV atualizada: " + oculosDeSol.getNivelProtecaoUv());
+
+        System.out.println("\n--- Tentando valores invalidos nas filhas ---");
+        oculosDeGrau.setDistanciaPupilar(90.0);
+        oculosDeSol.setNivelProtecaoUv("   ");
+        System.out.println("Distancia pupilar apos tentativa invalida: " + oculosDeGrau.getDistanciaPupilar() + " mm");
+        System.out.println("Protecao UV apos tentativa invalida: " + oculosDeSol.getNivelProtecaoUv());
 
         System.out.println("\n--- Testando setters com valores VALIDOS ---");
         meuOculos.setArmacao("Redondo");
