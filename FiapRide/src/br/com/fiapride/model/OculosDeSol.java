@@ -20,5 +20,11 @@ public class OculosDeSol extends Oculos {
         }
         this.nivelProtecaoUv = nivelProtecaoUv.trim();
     }
+
+    @Override
+    public String descreverUso() {
+        return "Uso para protecao solar: filtro " + this.nivelProtecaoUv
+                + " com lente " + this.getLenteUtilizada().getTipo() + ".";
+    }
 }
 

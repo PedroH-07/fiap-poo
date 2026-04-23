@@ -1,5 +1,8 @@
 package br.com.fiapride.main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.fiapride.model.Oculos;
 import br.com.fiapride.model.Lente;
 import br.com.fiapride.model.OculosDeGrau;
@@ -19,6 +22,12 @@ public class TesteMeuOculos {
         // Subclasses com atributos exclusivos
         OculosDeGrau oculosDeGrau = new OculosDeGrau("Quadrado", "Titanio", lentePrincipal, 63.5);
         OculosDeSol oculosDeSol = new OculosDeSol("Aviador", "Metal", lenteSolar, "UV400");
+
+        List<Oculos> colecaoDeOculos = new ArrayList<>();
+        colecaoDeOculos.add(meuOculos);
+        colecaoDeOculos.add(reservaOculos);
+        colecaoDeOculos.add(oculosDeGrau);
+        colecaoDeOculos.add(oculosDeSol);
 
         System.out.println("--- Estado inicial dos oculos ---");
         System.out.println("Meu oculos: " + meuOculos.getArmacao() + " | Material: "
@@ -83,6 +92,11 @@ public class TesteMeuOculos {
                 + meuOculos.getMaterial());
         System.out.println("Lente associada: Grau " + meuOculos.getLenteUtilizada().getGrau() + 
                 " | Tipo: " + meuOculos.getLenteUtilizada().getTipo());
+
+        System.out.println("\n--- Teste de fogo: Polimorfismo em acao ---");
+        for (Oculos oculos : colecaoDeOculos) {
+            System.out.println(oculos.descreverUso());
+        }
 
         // TENTATIVA DE BURLAR O SISTEMA
         // meuOculos.grau = 999.0; // vai exibir erro vermelho

@@ -52,4 +52,10 @@ public class Oculos {
         }
         this.lenteUtilizada = lenteUtilizada;
     }
+
+    public String descreverUso() {
+        String tipoLente = (this.lenteUtilizada != null) ? this.lenteUtilizada.getTipo() : "Sem lente";
+        return "Uso generico: armacao " + this.armacao + ", material " + this.material
+                + " e lente " + tipoLente + ".";
+    }
 }

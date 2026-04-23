@@ -20,5 +20,11 @@ public class OculosDeGrau extends Oculos {
         }
         this.distanciaPupilar = distanciaPupilar;
     }
+
+    @Override
+    public String descreverUso() {
+        return "Uso para correcao visual: DP " + this.distanciaPupilar
+                + " mm com lente " + this.getLenteUtilizada().getTipo() + ".";
+    }
 }
 
